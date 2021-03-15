@@ -18,18 +18,27 @@ class LocalesTableSeeder extends Seeder
                 'id'   => 1,
                 'code' => 'en',
                 'name' => 'English',
+                'direction' => 'ltr',
             ], [
                 'id'   => 2,
-                'code' => 'fr',
-                'name' => 'French',
+                'code' => 'fa',
+                'name' => 'Persian',
+                'direction' => 'rtl',
             ], [
                 'id'   => 3,
-                'code' => 'nl',
-                'name' => 'Dutch',
+                'code' => 'fr',
+                'name' => 'French',
+                'direction' => 'ltr',
             ], [
                 'id'   => 4,
+                'code' => 'nl',
+                'name' => 'Dutch',
+                'direction' => 'ltr',
+            ], [
+                'id'   => 5,
                 'code' => 'tr',
                 'name' => 'Türkçe',
+                'direction' => 'ltr',
             ]]);
     }
 }

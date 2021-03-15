@@ -17,8 +17,8 @@ class ChannelTableSeeder extends Seeder
             'theme'             => 'velocity',
             'hostname'          => config('app.url'),
             'root_category_id'  => 1,
-            'default_locale_id' => 1,
-            'base_currency_id'  => 1,
+            'default_locale_id' => 2,
+            'base_currency_id'  => 2,
         ]);
 
         DB::table('channel_translations')->insert([
@@ -65,6 +65,46 @@ class ChannelTableSeeder extends Seeder
             ], [
                 'id'                => 2,
                 'channel_id'        => 1,
+                'locale'            => 'fa',
+                'name'              => 'Default',
+                'home_page_content' => '
+                    <p>@include("shop::home.slider") @include("shop::home.featured-products") @include("shop::home.new-products")</p>
+                        <div class="banner-container">
+                        <div class="left-banner">
+                            <img src='.asset("/themes/default/assets/images/1.webp").' data-src='.asset("/themes/default/assets/images/1.webp").' class="lazyload" alt="test" width="720" height="720" />
+                        </div>
+                        <div class="right-banner">
+                            <img src='. asset("/themes/default/assets/images/2.webp").' data-src='. asset("/themes/default/assets/images/2.webp").' class="lazyload" alt="test" width="460" height="330" />
+                            <img src='.asset("/themes/default/assets/images/3.webp").' data-src='.asset("/themes/default/assets/images/3.webp").'  class="lazyload" alt="test" width="460" height="330" />
+                        </div>
+                    </div>
+                ',
+                'footer_content'    => '
+                    <div class="list-container">
+                        <span class="list-heading">دسترسی سریع</span>
+                        <ul class="list-group">
+                            <li><a href="@php echo route(\'shop.cms.page\', \'about-us\') @endphp">درباره ما</a></li>
+                            <li><a href="@php echo route(\'shop.cms.page\', \'return-policy\') @endphp">رویه‌ بازگرداندن کالا</a></li>
+                            <li><a href="@php echo route(\'shop.cms.page\', \'refund-policy\') @endphp">رویه بازگشت وجه</a></li>
+                            <li><a href="@php echo route(\'shop.cms.page\', \'terms-conditions\') @endphp">حریم خصوصی</a></li>
+                            <li><a href="@php echo route(\'shop.cms.page\', \'terms-of-use\') @endphp">شرایط استفاده</a></li><li><a href="@php echo route(\'shop.cms.page\', \'contact-us\') @endphp">تماس با ما</a></li>
+                        </ul>
+                    </div>
+                    <div class="list-container">
+                        <span class="list-heading">ارتباط با ما</span>
+                            <ul class="list-group">
+                                <li><a href="#"><span class="icon icon-facebook"></span>Facebook </a></li>
+                                <li><a href="#"><span class="icon icon-twitter"></span> Twitter </a></li>
+                                <li><a href="#"><span class="icon icon-instagram"></span> Instagram </a></li>
+                                <li><a href="#"> <span class="icon icon-google-plus"></span>Google+ </a></li>
+                                <li><a href="#"> <span class="icon icon-linkedin"></span>LinkedIn </a></li>
+                            </ul>
+                        </div>
+                ',
+                'home_seo'          => '{"meta_title": "Demo store", "meta_keywords": "Demo store meta keyword", "meta_description": "Demo store meta description"}',
+            ], [
+                'id'                => 3,
+                'channel_id'        => 1,
                 'locale'            => 'fr',
                 'name'              => 'Default',
                 'home_page_content' => '
@@ -103,7 +143,7 @@ class ChannelTableSeeder extends Seeder
                 ',
                 'home_seo'          => '{"meta_title": "Demo store", "meta_keywords": "Demo store meta keyword", "meta_description": "Demo store meta description"}',
             ], [
-                'id'                => 3,
+                'id'                => 4,
                 'channel_id'        => 1,
                 'locale'            => 'nl',
                 'name'              => 'Default',
@@ -143,7 +183,7 @@ class ChannelTableSeeder extends Seeder
                 ',
                 'home_seo'          => '{"meta_title": "Demo store", "meta_keywords": "Demo store meta keyword", "meta_description": "Demo store meta description"}',
             ], [
-                'id'                => 4,
+                'id'                => 5,
                 'channel_id'        => 1,
                 'locale'            => 'tr',
                 'name'              => 'Default',
@@ -186,13 +226,23 @@ class ChannelTableSeeder extends Seeder
         ]);
 
         DB::table('channel_currencies')->insert([
-            'channel_id'  => 1,
-            'currency_id' => 1,
+            [
+                'channel_id'  => 1,
+                'currency_id' => 1,
+            ],[
+                'channel_id'  => 1,
+                'currency_id' => 2,
+            ]
         ]);
 
         DB::table('channel_locales')->insert([
-            'channel_id' => 1,
-            'locale_id'  => 1,
+            [
+                'channel_id' => 1,
+                'locale_id'  => 1,
+            ],[
+                'channel_id' => 1,
+                'locale_id'  => 2,
+            ]
         ]);
 
         DB::table('channel_inventory_sources')->insert([
